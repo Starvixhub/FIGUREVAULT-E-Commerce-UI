@@ -1,2 +1,5 @@
-# Tem-Elaijeh-figure-store
-Alaijeh Figure Store is a minimalist, high-performance e-commerce UI for collectors. Combining clean, gallery-like aesthetics with conversion-focused UX, this project is architected for speed and scalability. Featuring an RTL-optimized layout, it provides a premium digital space for action figures and RC models. Developed by Sina Logic.
+# Elaijeh Figure Store
+
+Alaijeh Figure Store is a high-performance, minimalist e-commerce interface designed for elite action figure and RC model collectors. Architected for speed and seamless UX, this project blends gallery-grade aesthetics with conversion-driven logic. Built with a mobile-first, RTL-optimized approach, it redefines the digital experience for niche markets.
+
+Crafted by Sina Logic
