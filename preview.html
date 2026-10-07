@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FIGUREVAULT | Collect. Display. Own the Legend.</title>
+  <meta name="description" content="FIGUREVAULT is a premium collectible figure store for anime, superheroes, gaming figures and miniature collectibles.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0d0d0f;
+      --black-2: #151518;
+      --black-3: #202024;
+      --white: #f8f8f5;
+      --soft-white: #f1f1ed;
+      --card: #ffffff;
+      --line: #deded9;
+      --muted: #77777b;
+      --red: #e63946;
+      --red-dark: #b8202c;
+      --silver: #b9bcc2;
+      --max: 1380px;
+      --radius: 22px;
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--soft-white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================== */
+
+    .topbar {
+      background: var(--black);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    .topbar-inner {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar strong {
+      color: var(--red);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 20px;
+      color: #c9c9cc;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(248,248,245,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--black);
+      color: white;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::before {
+      content: "";
+      width: 14px;
+      height: 19px;
+      background: var(--red);
+      clip-path: polygon(
+        50% 0%,
+        72% 18%,
+        88% 48%,
+        72% 82%,
+        50% 100%,
+        28% 82%,
+        12% 48%,
+        28% 18%
+      );
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: .25s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: .25s;
+    }
+
+    .icon-btn:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    .cart-btn {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -3px;
+      right: -2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--red);
+      color: white;
+      font-size: 10px;
+      display: grid;
+      place-items: center;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    /* =========================
+       MARQUEE
+    ========================== */
+
+    .marquee {
+      background: var(--red);
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 45px;
+      padding: 11px 0;
+      animation: marquee 24s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      background: var(--black);
+      color: white;
+      min-height: 670px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      min-height: 670px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding: 60px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--silver);
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(58px, 7vw, 108px);
+      line-height: .88;
+      letter-spacing: -.075em;
+      max-width: 650px;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero-description {
+      max-width: 500px;
+      color: #aaaab0;
+      margin: 28px 0 34px;
+      font-size: 16px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 25px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #ff4b58;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #414146;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--black);
+    }
+
+    .hero-visual {
+      height: 100%;
+      min-height: 670px;
+      position: relative;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 50px 0 50px 0;
+      overflow: hidden;
+      border-radius: 30px 0 0 30px;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, var(--black) 0%, transparent 25%),
+        linear-gradient(0deg, rgba(0,0,0,.3), transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-image img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-badge {
+      position: absolute;
+      z-index: 4;
+      right: 35px;
+      bottom: 85px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--red);
+      color: white;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.3;
+      transform: rotate(-10deg);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+
+    .hero-badge span {
+      font-size: 28px;
+      display: block;
+    }
+
+    /* =========================
+       SECTION
+    ========================== */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      color: var(--red);
+      font-size: 11px;
+      letter-spacing: .18em;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: -.06em;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 470px;
+      font-size: 14px;
+    }
+
+    .view-all {
+      font-size: 13px;
+      font-weight: 800;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 5px;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       CATEGORIES
+    ========================== */
+
+    .categories {
+      background: var(--white);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .category {
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--black);
+      color: white;
+      isolation: isolate;
+    }
+
+    .category img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      opacity: .65;
+      transition: .4s;
+    }
+
+    .category::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,.85), transparent);
+      z-index: 1;
+    }
+
+    .category:hover img {
+      transform: scale(1.08);
+      opacity: .8;
+    }
+
+    .category-content {
+      position: absolute;
+      z-index: 2;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+    }
+
+    .category small {
+      color: #c5c5c9;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .category h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      margin-top: 3px;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================== */
+
+    .products {
+      background: var(--soft-white);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #e2e2de;
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .3s;
+      position: relative;
+    }
+
+    .product:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      height: 370px;
+      background: #ecece8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.04);
+    }
+
+    .tag {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      z-index: 3;
+      background: var(--red);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 9px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .wishlist {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 3;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      display: grid;
+      place-items: center;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-category {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .product-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+      margin: 6px 0 12px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price {
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .add-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--black);
+      color: white;
+      display: grid;
+      place-items: center;
+      transition: .25s;
+    }
+
+    .add-btn:hover {
+      background: var(--red);
+    }
+
+    /* =========================
+       PROMO
+    ========================== */
+
+    .promo {
+      background: var(--black);
+      color: white;
+    }
+
+    .promo-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 20px;
+    }
+
+    .promo-card {
+      min-height: 420px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      background: #18181b;
+    }
+
+    .promo-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: .62;
+    }
+
+    .promo-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.15));
+    }
+
+    .promo-content {
+      padding: 45px;
+      max-width: 570px;
+    }
+
+    .promo-content .section-kicker {
+      color: #ff5360;
+    }
+
+    .promo-content h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(35px, 4vw, 60px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin-bottom: 20px;
+    }
+
+    .promo-content p {
+      color: #bcbcc0;
+      margin-bottom: 25px;
+      max-width: 440px;
+    }
+
+    .promo-small {
+      background: var(--red);
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+    }
+
+    .promo-small::after {
+      background: linear-gradient(0deg, rgba(0,0,0,.8), transparent);
+    }
+
+    .promo-small .promo-content {
+      padding: 35px;
+    }
+
+    .promo-small h2 {
+      font-size: 42px;
+    }
+
+    /* =========================
+       FEATURES
+    ========================== */
+
+    .features {
+      background: white;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .feature {
+      padding: 35px 25px;
+      border-right: 1px solid var(--line);
+    }
+
+    .feature:last-child {
+      border-right: 0;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .feature h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* =========================
+       NEWSLETTER
+    ========================== */
+
+    .newsletter {
+      background: var(--red);
+      color: white;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      max-width: 550px;
+      margin: 0 auto 28px;
+      color: #ffe3e5;
+      font-size: 14px;
+    }
+
+    .newsletter-form {
+      max-width: 540px;
+      margin: auto;
+      display: flex;
+      background: white;
+      padding: 5px;
+      border-radius: 100px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      padding: 0 20px;
+      font: inherit;
+      background: transparent;
+      min-width: 0;
+    }
+
+    .newsletter-form button {
+      background: var(--black);
+      color: white;
+      border-radius: 100px;
+      padding: 0 24px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 70px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 45px;
+      padding-bottom: 55px;
+    }
+
+    .footer-brand p {
+      color: #89898e;
+      max-width: 340px;
+      font-size: 13px;
+      margin-top: 18px;
+    }
+
+    .footer-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: 18px;
+      color: #aaaab0;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+      color: #88888e;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #29292d;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .copyright {
+      color: #66666b;
+      font-size: 11px;
+    }
+
+    .developer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    .developer-brand {
+      color: var(--red);
+      font-weight: 900;
+    }
+
+    .developer-link {
+      color: #bdbdc2;
+      transition: .2s;
+    }
+
+    .developer-link:hover {
+      color: white;
+    }
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 100px);
+      background: var(--black);
+      color: white;
+      padding: 13px 20px;
+      border-radius: 100px;
+      font-size: 12px;
+      z-index: 2000;
+      opacity: 0;
+      transition: .3s;
+      box-shadow: 0 15px 35px rgba(0,0,0,.2);
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 1100px) {
+      .nav-links {
+        gap: 18px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .feature:nth-child(2) {
+        border-right: 0;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .top-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 76px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-copy {
+        padding: 85px 0 35px;
+      }
+
+      .hero-visual {
+        min-height: 480px;
+      }
+
+      .hero-image {
+        inset: 0 0 30px 0;
+        border-radius: 25px;
+      }
+
+      .promo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .nav {
+        min-height: 72px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav-actions .icon-btn:first-child {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 62px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-badge {
+        width: 110px;
+        height: 110px;
+        right: 15px;
+        bottom: 50px;
+        font-size: 9px;
+      }
+
+      .hero-badge span {
+        font-size: 22px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .category {
+        min-height: 150px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 430px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        border-right: 0;
+      }
+
+      .feature:last-child {
+        border-bottom: 0;
+      }
+
+      .newsletter-form {
+        height: 52px;
+      }
+
+      .newsletter-form button {
+        padding: 0 17px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .developer {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>FREE SHIPPING ON ORDERS OVER <strong>$100</strong></div>
+
+      <div class="top-links">
+        <a href="#">Track Order</a>
+        <a href="#">Contact</a>
+        <a href="#">USD / EN</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        <span class="logo-mark"></span>
+        FIGUREVAULT
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#collections">Collections</a>
+        <a href="#figures">Figures</a>
+        <a href="#rc-cars">RC & Models</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" aria-label="Search">⌕</button>
+
+        <button class="icon-btn cart-btn" aria-label="Cart">
+          ♡
+          <span class="cart-count">0</span>
+        </button>
+
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>COLLECTORS ONLY</span>
+      <span>✦</span>
+      <span>LIMITED EDITIONS</span>
+      <span>✦</span>
+      <span>ANIME FIGURES</span>
+      <span>✦</span>
+      <span>SUPERHEROES</span>
+      <span>✦</span>
+      <span>GAMING COLLECTIBLES</span>
+      <span>✦</span>
+      <span>COLLECTORS ONLY</span>
+      <span>✦</span>
+      <span>LIMITED EDITIONS</span>
+      <span>✦</span>
+      <span>ANIME FIGURES</span>
+      <span>✦</span>
+      <span>SUPERHEROES</span>
+      <span>✦</span>
+      <span>GAMING COLLECTIBLES</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow">Premium Collectibles</div>
+
+        <h1>
+          OWN<br>
+          THE<br>
+          <span>LEGEND.</span>
+        </h1>
+
+        <p class="hero-description">
+          Curated figures, iconic characters and display pieces
+          built for collectors who want more than a shelf full of toys.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#figures" class="btn btn-primary">
+            Explore Figures →
+          </a>
+
+          <a href="#collections" class="btn btn-outline">
+            View Collections
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1768654838737-ae7043c8d972?auto=format&fit=crop&fm=jpg&q=85&w=1800"
+            alt="Anime action figure collectible">
+        </div>
+
+        <div class="hero-badge">
+          <div>
+            <span>01</span>
+            NEW<br>
+            DROP
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="collections">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Browse the vault</div>
+          <h2 class="section-title">COLLECTIONS</h2>
+        </div>
+
+        <p class="section-text">
+          From anime legends to superhero icons, find the character
+          that belongs on your shelf.
+        </p>
+      </div>
+
+      <div class="category-grid">
+
+        <a href="#" class="category">
+          <img
+            src="https://images.unsplash.com/photo-1768654838737-ae7043c8d972?auto=format&fit=crop&q=80&w=800"
+            alt="Anime figure">
+          <div class="category-content">
+            <small>01 / Collection</small>
+            <h3>Anime</h3>
+          </div>
+        </a>
+
+        <a href="#" class="category">
+          <img
+            src="https://images.unsplash.com/photo-1521985179118-6008b8cef2c2?auto=format&fit=crop&q=80&w=800"
+            alt="Star Wars figures">
+          <div class="category-content">
+            <small>02 / Collection</small>
+            <h3>Star Wars</h3>
+          </div>
+        </a>
+
+        <a href="#" class="category">
+          <img
+            src="https://images.unsplash.com/photo-1781455091900-675fbc52900b?auto=format&fit=crop&q=80&w=800"
+            alt="Marvel figures">
+          <div class="category-content">
+            <small>03 / Collection</small>
+            <h3>Marvel</h3>
+          </div>
+        </a>
+
+        <a href="#" class="category">
+          <img
+            src="https://images.unsplash.com/photo-1599409404472-0be4f522d935?auto=format&fit=crop&q=80&w=800"
+            alt="Mario collectible">
+          <div class="category-content">
+            <small>04 / Collection</small>
+            <h3>Gaming</h3>
+          </div>
+        </a>
+
+        <a href="#" class="category">
+          <img
+            src="https://images.unsplash.com/photo-1782877757096-817463a79dcb?auto=format&fit=crop&q=80&w=800"
+            alt="Collectible figure">
+          <div class="category-content">
+            <small>05 / Collection</small>
+            <h3>Designer Toys</h3>
+          </div>
+        </a>
+
+        <a href="#" class="category">
+          <img
+            src="https://images.unsplash.com/photo-1711973976215-17484f69bb4e?auto=format&fit=crop&q=80&w=800"
+            alt="Stormtrooper collectible">
+          <div class="category-content">
+            <small>06 / Collection</small>
+            <h3>Icons</h3>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="figures">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Fresh from the vault</div>
+          <h2 class="section-title">FEATURED FIGURES</h2>
+        </div>
+
+        <a href="#" class="view-all">VIEW ALL →</a>
+      </div>
+
+      <div class="product-grid">
+
+        <!-- PRODUCT 01 -->
+        <article class="product">
+
+          <div class="product-image">
+            <span class="tag">New</span>
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1768654838737-ae7043c8d972?auto=format&fit=crop&q=85&w=1000"
+              alt="Anime action figure">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Anime / Limited</div>
+            <h3 class="product-name">Gogeta Ultra Edition</h3>
+
+            <div class="product-bottom">
+              <span class="price">$129.00</span>
+              <button class="add-btn" data-product="Gogeta Ultra Edition">+</button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- PRODUCT 02 -->
+        <article class="product">
+
+          <div class="product-image">
+            <span class="tag">Iconic</span>
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1521985179118-6008b8cef2c2?auto=format&fit=crop&q=85&w=1000"
+              alt="Darth Vader and Stormtrooper figures">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Star Wars / Classic</div>
+            <h3 class="product-name">Dark Side Duo</h3>
+
+            <div class="product-bottom">
+              <span class="price">$89.00</span>
+              <button class="add-btn" data-product="Dark Side Duo">+</button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- PRODUCT 03 -->
+        <article class="product">
+
+          <div class="product-image">
+            <span class="tag">Popular</span>
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1781455091900-675fbc52900b?auto=format&fit=crop&q=85&w=1000"
+              alt="Marvel collectible figures">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Marvel / Heroes</div>
+            <h3 class="product-name">Mutant Duo Set</h3>
+
+            <div class="product-bottom">
+              <span class="price">$74.00</span>
+              <button class="add-btn" data-product="Mutant Duo Set">+</button>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- PRODUCT 04 -->
+        <article class="product">
+
+          <div class="product-image">
+            <span class="tag">Collector</span>
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1599409404472-0be4f522d935?auto=format&fit=crop&q=85&w=1000"
+              alt="Mario Kart collectible">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Gaming / Nintendo</div>
+            <h3 class="product-name">Mario Kart Duo</h3>
+
+            <div class="product-bottom">
+              <span class="price">$59.00</span>
+              <button class="add-btn" data-product="Mario Kart Duo">+</button>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="promo" id="new">
+    <div class="container promo-grid">
+
+      <div class="promo-card">
+        <img
+          src="https://images.unsplash.com/photo-1711973976215-17484f69bb4e?auto=format&fit=crop&q=85&w=1400"
+          alt="Stormtrooper collectible">
+
+        <div class="promo-content">
+          <div class="section-kicker">The collector's choice</div>
+
+          <h2>
+            NOT JUST A TOY.<br>
+            A PIECE OF THE UNIVERSE.
+          </h2>
+
+          <p>
+            Display-ready collectibles selected for detail,
+            character and shelf presence.
+          </p>
+
+          <a href="#" class="btn btn-primary">
+            Shop Icons →
+          </a>
+        </div>
+      </div>
+
+      <div class="promo-card promo-small">
+
+        <img
+          src="https://images.unsplash.com/photo-1780223770371-4acd5608fafa?auto=format&fit=crop&q=85&w=1000"
+          alt="Marvel miniature figures">
+
+        <div class="promo-content">
+          <div class="section-kicker">Limited drop</div>
+
+          <h2>
+            BUILD<br>
+            YOUR<br>
+            SHELF.
+          </h2>
+
+          <a href="#" class="btn btn-outline">
+            Discover →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RC / MODELS -->
+  <section class="products" id="rc-cars">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Beyond figures</div>
+          <h2 class="section-title">RC & MINIATURES</h2>
+        </div>
+
+        <p class="section-text">
+          Scale models and miniature machines for collectors
+          who like their shelves with a little more motion.
+        </p>
+      </div>
+
+      <div class="product-grid">
+
+        <article class="product">
+          <div class="product-image">
+            <span class="tag">Scale 1:18</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1781726212828-f0e8b8207b9c?auto=format&fit=crop&q=85&w=1000"
+              alt="Miniature model cars">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Miniature / Racing</div>
+            <h3 class="product-name">Midnight Racer</h3>
+
+            <div class="product-bottom">
+              <span class="price">$84.00</span>
+              <button class="add-btn" data-product="Midnight Racer">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <span class="tag">RC</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1781726212828-f0e8b8207b9c?auto=format&fit=crop&q=85&w=1000"
+              alt="Miniature collectible car">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">RC / Street</div>
+            <h3 class="product-name">Street Machine</h3>
+
+            <div class="product-bottom">
+              <span class="price">$119.00</span>
+              <button class="add-btn" data-product="Street Machine">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <span class="tag">Limited</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1599409404472-0be4f522d935?auto=format&fit=crop&q=85&w=1000"
+              alt="Mario Kart miniature">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Gaming / Miniature</div>
+            <h3 class="product-name">Kart Legends</h3>
+
+            <div class="product-bottom">
+              <span class="price">$69.00</span>
+              <button class="add-btn" data-product="Kart Legends">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-image">
+            <span class="tag">Display</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1659480140628-863640ccf5b7?auto=format&fit=crop&q=85&w=1000"
+              alt="Toy collection display">
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Collectibles / Display</div>
+            <h3 class="product-name">Vault Display Set</h3>
+
+            <div class="product-bottom">
+              <span class="price">$99.00</span>
+              <button class="add-btn" data-product="Vault Display Set">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="about">
+    <div class="container">
+
+      <div class="feature-grid">
+
+        <div class="feature">
+          <div class="feature-icon">✦</div>
+          <h3>Curated Collection</h3>
+          <p>
+            Every piece is selected for collectors,
+            not mass-market shelves.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">□</div>
+          <h3>Collector Packaging</h3>
+          <p>
+            Carefully packed to keep your collectible
+            display-ready.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">↗</div>
+          <h3>Worldwide Shipping</h3>
+          <p>
+            Secure delivery for collectors wherever
+            their shelf happens to be.
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">◇</div>
+          <h3>Collector Support</h3>
+          <p>
+            Need help finding a specific figure?
+            Our vault team can help.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+
+      <h2>ENTER THE VAULT.</h2>
+
+      <p>
+        Get first access to limited drops, new figures,
+        collector editions and exclusive releases.
+      </p>
+
+      <form class="newsletter-form">
+        <input
+          type="email"
+          placeholder="Your email address"
+          aria-label="Email address"
+          required>
+
+        <button type="submit">
+          JOIN THE VAULT
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <span class="logo-mark"></span>
+            FIGUREVAULT
+          </a>
+
+          <p>
+            A modern collectible store concept built around
+            characters, craftsmanship and the culture of collecting.
+          </p>
+
+        </div>
+
+        <div>
+          <div class="footer-title">Shop</div>
+
+          <div class="footer-links">
+            <a href="#figures">Figures</a>
+            <a href="#collections">Collections</a>
+            <a href="#new">New Arrivals</a>
+            <a href="#rc-cars">RC & Models</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Information</div>
+
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">FAQ</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Follow</div>
+
+          <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">YouTube</a>
+            <a href="#">TikTok</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <div class="copyright">
+          © 2026 FIGUREVAULT. All rights reserved.
+        </div>
+
+        <div class="developer">
+          <span class="developer-brand">STARVIX</span>
+
+          <a
+            class="developer-link"
+            href="https://starvixdev.github.io/"
+            target="_blank"
+            rel="noopener">
+            DESIGN & DEVELOPER BY SINA REZAEI
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    Added to your collection ✓
+  </div>
+
+  <script>
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    /* =========================
+       CART
+    ========================== */
+
+    let cartCount = 0;
+
+    const cartCounter = document.querySelector(".cart-count");
+    const toast = document.getElementById("toast");
+
+    document.querySelectorAll(".add-btn").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        cartCount++;
+        cartCounter.textContent = cartCount;
+
+        toast.textContent =
+          `${button.dataset.product} added to your collection ✓`;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2200);
+
+      });
+
+    });
+
+    /* =========================
+       NEWSLETTER
+    ========================== */
+
+    document.querySelector(".newsletter-form").addEventListener("submit", e => {
+
+      e.preventDefault();
+
+      const button = e.currentTarget.querySelector("button");
+
+      button.textContent = "WELCOME TO THE VAULT";
+
+      e.currentTarget.querySelector("input").value = "";
+
+      setTimeout(() => {
+        button.textContent = "JOIN THE VAULT";
+      }, 3000);
+
+    });
+  </script>
+
+</body>
+</html>
