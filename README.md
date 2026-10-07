@@ -8,6 +8,12 @@ FIGUREVAULT is a modern e-commerce UI for action figures, anime characters, gami
 
 Combining a bold gallery-inspired aesthetic with conversion-focused UX, it delivers a fast, responsive storefront built for collectors.
 
+## Screenshot
+
+<p align="center">
+  <img src="starvixhub-github-io-FIGUREVAULT.png" alt="FIGUREVAULT" width="100%">
+</p>
+
 ## Features
 
 * Responsive e-commerce layout
@@ -40,11 +46,14 @@ FIGUREVAULT/
 
 ## Live Demo
 
-[View Live Demo](https://starvixdev.github.io/FIGUREVAULT/)
+* [🌐 GitHub Pages](https://starvixdev.github.io/FIGUREVAULT/)
+* [🎨 CodePen](https://codepen.io/editor/sinarezaei/pen/01a11545-2143-704c-b976-e466b08de5e1) 
 
 ## License
 
 This project is licensed under the MIT License.
+
+See the [LICENSE](LICENSE) file for the full license text.
 
 ## Credits
 
