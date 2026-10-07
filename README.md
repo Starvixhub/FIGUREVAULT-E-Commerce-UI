@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="FigureVault.jpg" alt="FIGUREVAULT" width="100%">
+  <img src="Figurevault.jpg" alt="FIGUREVAULT" width="100%">
 </p>
 
 # FIGUREVAULT
